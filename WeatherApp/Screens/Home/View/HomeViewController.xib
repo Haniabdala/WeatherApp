@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="WeatherApp" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="wir-bE-Vv2" id="RLv-4D-H9J"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="rfb-y2-iDD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EBu-aH-iwk">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <subviews>
+                        <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWo-Ox-nHe">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <items>
+                                <navigationItem title="Cities" id="Tlk-eu-Gcg">
+                                    <barButtonItem key="rightBarButtonItem" title="Add" id="Um3-4E-1vR">
+                                        <connections>
+                                            <action selector="addCityButton:" destination="-1" id="av1-PO-BmP"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wir-bE-Vv2">
+                            <rect key="frame" x="0.0" y="44" width="414" height="808"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="wir-bE-Vv2" firstAttribute="top" secondItem="HWo-Ox-nHe" secondAttribute="bottom" id="19I-wK-dFb"/>
+                        <constraint firstItem="wir-bE-Vv2" firstAttribute="leading" secondItem="EBu-aH-iwk" secondAttribute="leading" id="Bok-fs-lk7"/>
+                        <constraint firstAttribute="trailing" secondItem="wir-bE-Vv2" secondAttribute="trailing" id="cve-YE-1bq"/>
+                        <constraint firstAttribute="bottom" secondItem="wir-bE-Vv2" secondAttribute="bottom" id="rYH-Xb-MaQ"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="EBu-aH-iwk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="1Re-d7-pDb"/>
+                <constraint firstItem="EBu-aH-iwk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5Pc-cj-DBE"/>
+                <constraint firstAttribute="bottom" secondItem="EBu-aH-iwk" secondAttribute="bottom" id="AsP-E0-NUi"/>
+                <constraint firstItem="EBu-aH-iwk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Dj2-2U-DuB"/>
+            </constraints>
+            <point key="canvasLocation" x="-181.15942028985509" y="72.991071428571431"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
