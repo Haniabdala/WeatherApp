@@ -7,15 +7,19 @@
 
 import UIKit
 
-class BaseViewModel: UITabBarController {
+class BaseViewModel: UITabBarController, UITabBarControllerDelegate {
 
+    var viewModel = HomeViewController()
+  
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
 
+        
         let firstViewController = HomeViewController()
                 
         firstViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home"), tag: 0)
-     
 
         let secondViewController = HelpViewController()
 
@@ -27,6 +31,10 @@ class BaseViewModel: UITabBarController {
        // thirdViewController.tabBarItem.image =
         
       let tabBarList = [firstViewController,secondViewController,thirdViewController]
+        
+     
+        
+        
 
         self.viewControllers = tabBarList
     }

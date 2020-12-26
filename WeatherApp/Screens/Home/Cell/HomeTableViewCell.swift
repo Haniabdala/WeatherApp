@@ -15,8 +15,8 @@ class HomeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.nameLabel.numberOfLines = 1
     }
-    func configureCell(withCity City: City) {
+    func configureCell(withCity City: CityCoreData) {
         self.textLabel?.text = City.name
-       
+      
     }
 }
