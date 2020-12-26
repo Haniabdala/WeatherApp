@@ -22,7 +22,6 @@ class AddCityViewController: UIViewController , UISearchBarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     func showOnMap(lat : Double , long : Double){
         let annotation = MKPointAnnotation()
         let centerCoordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
