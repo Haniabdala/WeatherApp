@@ -69,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C1F429D25972A68005DCEED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1CDD756A25967FA60074947E /* AddCityViewController.swift */,
+				1CDD756B25967FA60074947E /* AddCityViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1C5E7D8E25964F08008611C5 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,8 +188,7 @@
 		1CDD756925967F690074947E /* Cities */ = {
 			isa = PBXGroup;
 			children = (
-				1CDD756A25967FA60074947E /* AddCityViewController.swift */,
-				1CDD756B25967FA60074947E /* AddCityViewController.xib */,
+				1C1F429D25972A68005DCEED /* View */,
 			);
 			path = Cities;
 			sourceTree = "<group>";
@@ -190,7 +198,6 @@
 			children = (
 				1CE41DB4259658FF009304CC /* ViewModel */,
 				1CE41DB3259658F6009304CC /* View */,
-				1CE41DB2259658F1009304CC /* Cell */,
 				1CE41DB1259658E6009304CC /* Model */,
 			);
 			path = Help;
@@ -201,13 +208,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		1CE41DB2259658F1009304CC /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		1CE41DB3259658F6009304CC /* View */ = {
