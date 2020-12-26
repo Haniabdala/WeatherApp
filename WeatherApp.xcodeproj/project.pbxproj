@@ -25,6 +25,7 @@
 		1C5F7D742596451200128B86 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5F7D722596451200128B86 /* HomeViewController.swift */; };
 		1C5F7D752596451200128B86 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C5F7D732596451200128B86 /* HomeViewController.xib */; };
 		1C5F7D8025964A9400128B86 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5F7D7F25964A9400128B86 /* HomeViewModel.swift */; };
+		1C638A402597714F0064FCAF /* HomeViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C638A3F2597714F0064FCAF /* HomeViewControllerProtocol.swift */; };
 		1CDD756C25967FA60074947E /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDD756A25967FA60074947E /* AddCityViewController.swift */; };
 		1CDD756D25967FA60074947E /* AddCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CDD756B25967FA60074947E /* AddCityViewController.xib */; };
 		1CE41DAD2596547A009304CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CE41DAC2596547A009304CC /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		1C5F7D722596451200128B86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1C5F7D732596451200128B86 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		1C5F7D7F25964A9400128B86 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		1C638A3F2597714F0064FCAF /* HomeViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerProtocol.swift; sourceTree = "<group>"; };
 		1CDD756A25967FA60074947E /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
 		1CDD756B25967FA60074947E /* AddCityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCityViewController.xib; sourceTree = "<group>"; };
 		1CE41DAC2596547A009304CC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				1C5F7D722596451200128B86 /* HomeViewController.swift */,
+				1C638A3F2597714F0064FCAF /* HomeViewControllerProtocol.swift */,
 				1C5F7D732596451200128B86 /* HomeViewController.xib */,
 			);
 			path = View;
@@ -390,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C638A402597714F0064FCAF /* HomeViewControllerProtocol.swift in Sources */,
 				1C5F7D5725963A4700128B86 /* WeatherApp.xcdatamodeld in Sources */,
 				1C5F7D662596405E00128B86 /* APISettings.swift in Sources */,
 				1C39325925974125003751A2 /* HomeModel.swift in Sources */,
