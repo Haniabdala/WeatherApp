@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeViewController: UIViewController  {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
+    var items : [CityCoreData]?
     
     @IBAction func addCityButton(_ sender: UIBarButtonItem){
         print("Added")
@@ -24,43 +27,66 @@ class HomeViewController: UIViewController  {
         
     }
     
-    let testCity = City(name: "Ohio, USA ", temperature: 2, longitude: 3, latitude: 4, windSpeed: 1, windDeg: 2, humidity: 23, icon: "sd")
-    
-    var cities = [City]()
-
     @IBOutlet weak var tableView: UITableView! {
         
             didSet {
                 self.tableView.dataSource = self
                 self.tableView.delegate = self
                 self.tableView.tableFooterView = UIView()
-                self.tableView.tableFooterView = UIView()
                 self.tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeTableViewCell")
+                self.fetchPeople()
 
                
             }
     }
     
     
-    
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        fetchPeople()
+    }
+    
+    
+    func fetchPeople(){
+
+           do {
+               
+           let request  = CityCoreData.fetchRequest() as NSFetchRequest<CityCoreData>
+               
+             let sort = NSSortDescriptor(key: "name", ascending: true)
+              request.sortDescriptors  = [sort]
+            
+            
+            self.items = try context.fetch(request)
+      
+          
+            DispatchQueue.main.async {
+                    
+                self.tableView.reloadData()
+              
+                }
+
+        
+            
+           }catch {
+            print("Eror here")
+           }
+       }
 }
 
-func addCity() {
-    
-}
 
 
 extension HomeViewController : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return cities.count
-        return 10
+        return self.items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,7 +94,9 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource {
             .dequeueReusableCell(withIdentifier: "HomeTableViewCell",
                                  for: indexPath) as? HomeTableViewCell
             else { fatalError() }
-        tableViewCell.configureCell(withCity: testCity)
+     
+        let city = self.items![indexPath.row]
+        tableViewCell.configureCell(withCity: city)
         
         return tableViewCell
     }

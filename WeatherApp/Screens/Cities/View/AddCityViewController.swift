@@ -8,7 +8,10 @@
 import UIKit
 import MapKit
 
-class AddCityViewController: UIViewController , UISearchBarDelegate{
+class AddCityViewController: UIViewController {
+    
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBAction func searchButton(_ sender: UIButton) {
@@ -16,12 +19,45 @@ class AddCityViewController: UIViewController , UISearchBarDelegate{
         if let text = searchTextField.text {
 
             findCoordinates(cityName: text)
+            
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
+
+    
+    func AddCity(CityNamE City : String){
+        
+            let alert = UIAlertController(title: "Add City", message: "Do you want to add this city ", preferredStyle: .alert)
+    
+            let submitButton = UIAlertAction(title: "Add \(City)", style: .default) { (action) in
+                
+                
+                let newCity = CityCoreData(context: self.context)
+                newCity.name = City
+                newCity.latitude = 23.23
+                newCity.longitude = 23.12
+                
+                do{
+                    try  self.context.save()
+                }catch{
+                    
+                }
+            }
+       
+ 
+            alert.addAction(submitButton)
+            
+        self.present(alert, animated: true, completion: nil)
+            
+      
+    }
+    
+    
+    
     func showOnMap(lat : Double , long : Double){
         let annotation = MKPointAnnotation()
         let centerCoordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
@@ -30,6 +66,7 @@ class AddCityViewController: UIViewController , UISearchBarDelegate{
         let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(region, animated: true)
         mapView.addAnnotation(annotation)
+       
     }
     
     func findCoordinates(cityName city : String) {
@@ -49,7 +86,8 @@ class AddCityViewController: UIViewController , UISearchBarDelegate{
                    let location = item.placemark.location {
                  
                     self.showOnMap(lat: location.coordinate.latitude,long : location.coordinate.longitude)
-                  //  print("\(name): \(location.coordinate.latitude),\(location.coordinate.longitude)")
+                    self.AddCity(CityNamE: city)
+                  //  self.viewModel.fetchPeople()
                 }
             }
         }
