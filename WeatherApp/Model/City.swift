@@ -23,7 +23,6 @@ struct City {
         case temp = "temperature"
         case humidity
         case wind
-        
   
     }
     

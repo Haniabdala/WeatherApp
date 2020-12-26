@@ -9,24 +9,13 @@ import UIKit
 import CoreData
 
 class HomeViewController: UIViewController  {
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-    var items : [CityCoreData]?
+    var viewModel = HomeViewModel()
     
     @IBAction func addCityButton(_ sender: UIBarButtonItem){
-        print("Added")
-
-        
-
         let addCityVC = AddCityViewController(nibName: "AddCityViewController", bundle: nil)
-  
         self.navigationController?.pushViewController(addCityVC, animated: true)
-        
-        
-        
     }
-    
     @IBOutlet weak var tableView: UITableView! {
         
             didSet {
@@ -34,59 +23,30 @@ class HomeViewController: UIViewController  {
                 self.tableView.delegate = self
                 self.tableView.tableFooterView = UIView()
                 self.tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeTableViewCell")
-                self.fetchPeople()
-
-               
             }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        fetchPeople()
+        viewModel.fetchCities()
+        reloadTableViewContent()
     }
-    
-    
-    func fetchPeople(){
-
-           do {
-               
-           let request  = CityCoreData.fetchRequest() as NSFetchRequest<CityCoreData>
-               
-             let sort = NSSortDescriptor(key: "name", ascending: true)
-              request.sortDescriptors  = [sort]
-            
-            
-            self.items = try context.fetch(request)
-      
-          
-            DispatchQueue.main.async {
-                    
-                self.tableView.reloadData()
-              
-                }
-
-        
-            
-           }catch {
-            print("Eror here")
-           }
-       }
 }
 
+extension HomeViewController : UITableViewDelegate , UITableViewDataSource , HomeViewControllerProtocol {
+    func reloadTableViewContent() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+          
+            }
+    }
 
-
-extension HomeViewController : UITableViewDelegate , UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return cities.count
-        return self.items?.count ?? 0
+        return self.viewModel.items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,16 +54,30 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource {
             .dequeueReusableCell(withIdentifier: "HomeTableViewCell",
                                  for: indexPath) as? HomeTableViewCell
             else { fatalError() }
-     
-        let city = self.items![indexPath.row]
+        let city = viewModel.items![indexPath.row]
         tableViewCell.configureCell(withCity: city)
-        
         return tableViewCell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-     
     }
     
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        //Create Swipe action
+        
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+        
+            
+            let city = self.viewModel.items![indexPath.row]
+      
+            self.viewModel.deleteCity(CityName: city)
+            self.reloadTableViewContent()
+        }
+   
+        return UISwipeActionsConfiguration(actions: [action])
+     
+    }
     
 }
