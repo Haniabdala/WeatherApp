@@ -12,49 +12,44 @@ class MapViewController: UIViewController {
     
     
     let viewModel = MapViewModel()
- 
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBAction func searchButton(_ sender: UIButton) {
+        if let text = searchTextField.text {
+            findCoordinates(cityName: text)
+        }
+    }
     
     @IBOutlet weak var mapView: MKMapView! {
         didSet{
-            
             let items = viewModel.fetchCities()
-            print(items)
             for city in items {
-               
+                let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(MapViewController.getCoordinatePressOnMap(sender:)))
+                gestureRecognizer.numberOfTapsRequired = 1
+                mapView.addGestureRecognizer(gestureRecognizer)
                 generatePins(lat: city.latitude, long: city.longitude)
-            
-                
             }
-            
             
         }
     }
     
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBAction func searchButton(_ sender: UIButton) {
-        
-        if let text = searchTextField.text {
-
-            findCoordinates(cityName: text)
-            
-        }
-    }
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
-    func AddCity(CityNamE City : String , Latitude lat: Double, Longitude long: Double ){
-        
-            let alert = UIAlertController(title: "Add City", message: "Do you want to add this city ", preferredStyle: .alert)
     
+    @IBAction func getCoordinatePressOnMap(sender: UITapGestureRecognizer) {
+        let touchLocation = sender.location(in: mapView)
+        let locationCoordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
+        print(locationCoordinate.latitude)           }
+
+    func AddCity(CityNamE City : String , Latitude lat: Double, Longitude long: Double ){
+            let alert = UIAlertController(title: "Add City", message: "Do you want to add this city ", preferredStyle: .alert)
             let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let submitButton = UIAlertAction(title: "Add \(City)", style: .default) { (action) in
-                        
             self.viewModel.insertCity(CityName: City, Latitude: lat, Longitude: long)
-
             }
-       
             alert.addAction(submitButton)
             alert.addAction(cancelButton)
         self.present(alert, animated: true, completion: nil)
@@ -85,28 +80,19 @@ class MapViewController: UIViewController {
             for item in response.mapItems {
                 if let _ = item.name,
                    let location = item.placemark.location {
-                 
                     self.showOnMap(lat: location.coordinate.latitude,long : location.coordinate.longitude)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         self.AddCity(CityNamE: city , Latitude: location.coordinate.latitude , Longitude: location.coordinate.longitude)
                        }
-                   
                 }
             }
         }
     }
-    
-
-
-    
     func generatePins(lat : Double , long : Double){
         let annotation = MKPointAnnotation()
         let centerCoordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
         annotation.coordinate = centerCoordinate
         mapView.addAnnotation(annotation)
     }
-
-
 }
-
 

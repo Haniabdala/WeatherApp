@@ -61,9 +61,7 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let CityDetailVC = CityDetailViewController(nibName: "CityDetailViewController", bundle: nil)
-
         let cell = viewModel.items![indexPath.row]
-        
         CityDetailVC.cityName = (cell.name)!
         self.navigationController?.pushViewController(CityDetailVC, animated: true)
        
@@ -78,7 +76,6 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
         
             
             let city = self.viewModel.items![indexPath.row]
-      
             self.viewModel.deleteCity(CityName: city)
             self.reloadTableViewContent()
         }
