@@ -11,6 +11,14 @@ class CityDetailViewController: UIViewController {
 
     @IBOutlet weak var cityNameLabel: UILabel!
     
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    
+    @IBOutlet weak var windLabel: UILabel!
+    
+    
+    let viewModel = CityDetailViewModel()
+    
     var cityName : String = ""
     
     override func viewDidLoad() {
@@ -22,54 +30,20 @@ class CityDetailViewController: UIViewController {
             fatalError()
         }
     
-  
-        getData(externalUrl: urlString )
+        viewModel.getCurrentWeatherData(externalUrl: urlString) { res in
+            
+            self.updateCityDetailView(responseResult: res)
+        
+        }
     }
-   
-    func getData(externalUrl : URL){
-       let task =  URLSession.shared.dataTask(with: externalUrl) { (data, response, error) in
-            
-            guard let data = data , error == nil else{
-                print("Something Went Wrong")
-                return
-            }
-            
-            var result : Response?
-            
-            do {
-                result = try JSONDecoder().decode(Response.self, from: data)
-                
-            }catch{
-                print("fAILED TO CONVERT")
-            }
-            
-            guard let json = result else {
-                print("no data")
-                return
-            }
+    
+    func updateCityDetailView(responseResult : Response){
         
         DispatchQueue.main.async {
-            self.cityNameLabel.text = json.name
-             
-        }
-     
-        print(json.name)
-            
-        }
-
-        task.resume()
-        
+           self.cityNameLabel.text = responseResult.name
+            self.temperatureLabel.text = String( "\(responseResult.main.temp) C")
+            self.humidityLabel.text = String(responseResult.main.humidity)
+    
+       }
     }
 }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
