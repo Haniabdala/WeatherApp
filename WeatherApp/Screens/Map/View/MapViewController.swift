@@ -51,7 +51,7 @@ class MapViewController: UIViewController {
             let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let submitButton = UIAlertAction(title: "Add \(City)", style: .default) { (action) in
                         
-            self.viewModel.inserCity(CityName: City, Latitude: lat, Longitude: long)
+            self.viewModel.insertCity(CityName: City, Latitude: lat, Longitude: long)
 
             }
        
@@ -87,12 +87,16 @@ class MapViewController: UIViewController {
                    let location = item.placemark.location {
                  
                     self.showOnMap(lat: location.coordinate.latitude,long : location.coordinate.longitude)
-                    self.AddCity(CityNamE: city , Latitude: location.coordinate.latitude , Longitude: location.coordinate.longitude)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        self.AddCity(CityNamE: city , Latitude: location.coordinate.latitude , Longitude: location.coordinate.longitude)
+                       }
+                   
                 }
             }
         }
     }
     
+
 
     
     func generatePins(lat : Double , long : Double){
