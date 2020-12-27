@@ -39,7 +39,7 @@ class MapViewModel : UIViewController {
        }
     
     
-    func inserCity(CityName City : String , Latitude lat: Double, Longitude long: Double )  {
+    func insertCity(CityName City : String , Latitude lat: Double, Longitude long: Double )  {
         
         let newCity = CityCoreData(context: self.context)
         newCity.name = City
