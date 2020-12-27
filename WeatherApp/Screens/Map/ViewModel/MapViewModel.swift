@@ -8,11 +8,36 @@
 import Foundation
 import CoreData
 import UIKit
+import MapKit
 
 class MapViewModel : UIViewController {
     
+    let model = MapModel()
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    
+    
+    func fetchCities() -> [CityCoreData]{
 
+       
+        var items = [CityCoreData]()
+           do {
+               
+           let request  = CityCoreData.fetchRequest() as NSFetchRequest<CityCoreData>
+               
+             let sort = NSSortDescriptor(key: "name", ascending: true)
+              request.sortDescriptors  = [sort]
+            
+            
+             items = try context.fetch(request)
+            
+           }catch {
+            print("Eror here")
+           }
+        return items
+       }
+    
     
     func inserCity(CityName City : String , Latitude lat: Double, Longitude long: Double )  {
         
@@ -26,6 +51,4 @@ class MapViewModel : UIViewController {
         }catch{
             
         }
-    }
-    
-}
+    }}
