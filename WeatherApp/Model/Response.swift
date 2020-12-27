@@ -1,12 +1,12 @@
 //
-//  City.swift
+//  Response.swift
 //  WeatherApp
 //
-//  Created by Hani Abdallah on 12/25/20.
+//  Created by Hani Abdallah on 12/27/20.
 //
 
 import Foundation
-/*
+
 
 struct Response : Codable {
    
@@ -26,4 +26,3 @@ struct City : Codable {
     
     
 }
-*/
