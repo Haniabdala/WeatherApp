@@ -12,8 +12,24 @@ class MapViewController: UIViewController {
     
     
     let viewModel = MapViewModel()
+ 
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MKMapView! {
+        didSet{
+            
+            let items = viewModel.fetchCities()
+            print(items)
+            for city in items {
+               
+                generatePins(lat: city.latitude, long: city.longitude)
+            
+                
+            }
+            
+            
+        }
+    }
+    
     @IBOutlet weak var searchTextField: UITextField!
     @IBAction func searchButton(_ sender: UIButton) {
         
@@ -77,16 +93,15 @@ class MapViewController: UIViewController {
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func generatePins(lat : Double , long : Double){
+        let annotation = MKPointAnnotation()
+        let centerCoordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        annotation.coordinate = centerCoordinate
+        mapView.addAnnotation(annotation)
     }
-    */
+
 
 }
 

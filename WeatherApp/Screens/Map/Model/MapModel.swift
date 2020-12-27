@@ -7,11 +7,13 @@
 
 import Foundation
 import CoreData
+import MapKit
 
 class  MapModel{
+    
+    
+    }
    
 
-        
-    }
 
     
