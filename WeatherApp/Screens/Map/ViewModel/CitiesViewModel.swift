@@ -9,12 +9,12 @@ import Foundation
 import CoreData
 import UIKit
 
-class CitiesViewModel : UIViewController {
+class MapViewModel : UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
-    func inserCity(CityNamE City : String , Latitude lat: Double, Longitude long: Double )  {
+    func inserCity(CityName City : String , Latitude lat: Double, Longitude long: Double )  {
         
         let newCity = CityCoreData(context: self.context)
         newCity.name = City

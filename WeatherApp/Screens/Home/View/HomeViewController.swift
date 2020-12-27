@@ -13,7 +13,7 @@ class HomeViewController: UIViewController  {
     var viewModel = HomeViewModel()
     
     @IBAction func addCityButton(_ sender: UIBarButtonItem){
-        let addCityVC = AddCityViewController(nibName: "AddCityViewController", bundle: nil)
+        let addCityVC = MapViewController(nibName: "MapViewController", bundle: nil)
         self.navigationController?.pushViewController(addCityVC, animated: true)
     }
     @IBOutlet weak var tableView: UITableView! {
@@ -60,6 +60,13 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let CityDetailVC = CityDetailViewController(nibName: "CityDetailViewController", bundle: nil)
+
+        let cell = viewModel.items![indexPath.row]
+        
+        CityDetailVC.cityName = (cell.name)!
+        self.navigationController?.pushViewController(CityDetailVC, animated: true)
+       
     }
     
     

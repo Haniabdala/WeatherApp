@@ -8,10 +8,10 @@
 import UIKit
 import MapKit
 
-class AddCityViewController: UIViewController {
+class MapViewController: UIViewController {
     
     
-    let viewModel = CitiesViewModel()
+    let viewModel = MapViewModel()
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchTextField: UITextField!
@@ -35,7 +35,7 @@ class AddCityViewController: UIViewController {
             let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let submitButton = UIAlertAction(title: "Add \(City)", style: .default) { (action) in
                         
-            self.viewModel.inserCity(CityNamE: City, Latitude: lat, Longitude: long)
+            self.viewModel.inserCity(CityName: City, Latitude: lat, Longitude: long)
 
             }
        
