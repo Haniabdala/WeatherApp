@@ -63,6 +63,9 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
         let CityDetailVC = CityDetailViewController(nibName: "CityDetailViewController", bundle: nil)
         let cell = viewModel.items![indexPath.row]
         CityDetailVC.cityName = (cell.name)!
+        CityDetailVC.cityLatitude = (cell.latitude)
+        CityDetailVC.cityLongitude = (cell.longitude)
+
         self.navigationController?.pushViewController(CityDetailVC, animated: true)
        
     }

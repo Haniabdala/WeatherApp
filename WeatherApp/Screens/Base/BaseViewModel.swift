@@ -15,7 +15,7 @@ class BaseViewModel: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-
+        self.title = "Weather App"
         
         let firstViewController = HomeViewController()
                 
@@ -27,8 +27,7 @@ class BaseViewModel: UITabBarController, UITabBarControllerDelegate {
         let thirdViewController = SettingsViewController()
         
       
-        thirdViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 0)
-       // thirdViewController.tabBarItem.image =
+        thirdViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 2)
         
       let tabBarList = [firstViewController,secondViewController,thirdViewController]
         

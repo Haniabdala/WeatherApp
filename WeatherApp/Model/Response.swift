@@ -10,19 +10,8 @@ import Foundation
 
 struct Response : Codable {
    
-   var timezone: Int
-    var name : String
-    var cod : Int
-    var main : City
-}
-
-struct City : Codable {
-    
-    var temp : Double
-    var pressure : Int
-    var humidity : Int
-    var temp_max : Double
-    var temp_min : Double
-    
-    
+    var lat : Double
+    var lon : Double
+    var current : City
+    var daily : [cityDaily]
 }

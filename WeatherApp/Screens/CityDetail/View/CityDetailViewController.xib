@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityDetailViewController" customModule="WeatherApp" customModuleProvider="target">
             <connections>
-                <outlet property="cityNameLabel" destination="mlJ-eZ-uoG" id="YQg-gA-7eX"/>
-                <outlet property="humidityLabel" destination="omf-M0-w51" id="EOR-qB-8Xu"/>
-                <outlet property="temperatureLabel" destination="gND-rk-Lpu" id="aWK-5M-RXY"/>
+                <outlet property="CityTempLabel" destination="2qC-fx-vvi" id="wYK-3Q-ere"/>
+                <outlet property="cityNameLabel" destination="fK0-iQ-dfo" id="6CN-14-sy9"/>
+                <outlet property="forecastTableView" destination="dKN-hI-mw1" id="oRc-bs-QpX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="windLabel" destination="GOM-Iz-Rg1" id="RSG-dM-8YC"/>
+                <outlet property="weatherSatusLabel" destination="TVz-wk-m5j" id="tYp-uJ-d1X"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,34 +22,46 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2fM-4q-bmo">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2fM-4q-bmo">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="CityName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlJ-eZ-uoG">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="204.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-iQ-dfo">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="50"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CityTemp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gND-rk-Lpu">
-                            <rect key="frame" x="0.0" y="204.5" width="414" height="204.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="weatherStatus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVz-wk-m5j">
+                            <rect key="frame" x="112.5" y="55.5" width="189" height="33.5"/>
+                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="30"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CityHumidity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omf-M0-w51">
-                            <rect key="frame" x="0.0" y="409" width="414" height="204.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityTemp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qC-fx-vvi">
+                            <rect key="frame" x="84" y="89" width="246.5" height="66.5"/>
+                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="60"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOM-Iz-Rg1">
-                            <rect key="frame" x="0.0" y="613.5" width="414" height="204.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dKN-hI-mw1">
+                            <rect key="frame" x="0.0" y="155.5" width="414" height="662.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="2qC-fx-vvi" firstAttribute="top" secondItem="TVz-wk-m5j" secondAttribute="bottom" id="2pa-rZ-RdC"/>
+                        <constraint firstAttribute="bottom" secondItem="dKN-hI-mw1" secondAttribute="bottom" id="7ko-rX-aFS"/>
+                        <constraint firstItem="fK0-iQ-dfo" firstAttribute="top" secondItem="2fM-4q-bmo" secondAttribute="top" id="B36-0W-Urh"/>
+                        <constraint firstItem="TVz-wk-m5j" firstAttribute="top" secondItem="fK0-iQ-dfo" secondAttribute="bottom" id="BPk-eP-6D6"/>
+                        <constraint firstAttribute="trailing" secondItem="fK0-iQ-dfo" secondAttribute="trailing" id="L5f-9d-IMa"/>
+                        <constraint firstItem="2qC-fx-vvi" firstAttribute="top" secondItem="TVz-wk-m5j" secondAttribute="bottom" id="OrH-O0-Imy"/>
+                        <constraint firstAttribute="trailing" secondItem="dKN-hI-mw1" secondAttribute="trailing" id="TiO-fQ-kfq"/>
+                        <constraint firstAttribute="trailing" secondItem="fK0-iQ-dfo" secondAttribute="trailing" id="XcF-zU-XpY"/>
+                        <constraint firstItem="dKN-hI-mw1" firstAttribute="leading" secondItem="2fM-4q-bmo" secondAttribute="leading" id="gHj-RL-B4E"/>
+                        <constraint firstItem="fK0-iQ-dfo" firstAttribute="leading" secondItem="2fM-4q-bmo" secondAttribute="leading" id="goB-N4-nUX"/>
+                        <constraint firstItem="TVz-wk-m5j" firstAttribute="top" secondItem="fK0-iQ-dfo" secondAttribute="bottom" id="jbi-IP-9Hw"/>
+                        <constraint firstItem="fK0-iQ-dfo" firstAttribute="leading" secondItem="2fM-4q-bmo" secondAttribute="leading" id="nyd-PI-h7y"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
