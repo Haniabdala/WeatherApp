@@ -13,6 +13,7 @@
                 <outlet property="CityTempLabel" destination="2qC-fx-vvi" id="wYK-3Q-ere"/>
                 <outlet property="cityNameLabel" destination="fK0-iQ-dfo" id="6CN-14-sy9"/>
                 <outlet property="forecastTableView" destination="dKN-hI-mw1" id="oRc-bs-QpX"/>
+                <outlet property="unitSegment" destination="uUO-9f-qIZ" id="JeK-rc-ZfB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weatherSatusLabel" destination="TVz-wk-m5j" id="tYp-uJ-d1X"/>
             </connections>
@@ -46,6 +47,17 @@
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dKN-hI-mw1">
                             <rect key="frame" x="0.0" y="155.5" width="414" height="662.5"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="uUO-9f-qIZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="metrics"/>
+                                    <segment title="imperial"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentDidChange:" destination="-1" eventType="valueChanged" id="4Lp-Eh-VOG"/>
+                                </connections>
+                            </segmentedControl>
                         </tableView>
                     </subviews>
                     <constraints>

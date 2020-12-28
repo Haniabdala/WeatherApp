@@ -56,22 +56,6 @@
             </objects>
             <point key="canvasLocation" x="-2001" y="605"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="JZH-ie-obm">
-            <objects>
-                <viewController id="Avy-i0-jR5" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OOi-1f-DoF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="XZh-bb-gbh"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" id="fsJ-J6-nsq"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v1M-Lb-y5g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="452" y="605"/>
-        </scene>
         <!--Base View Model-->
         <scene sceneID="rvG-0m-OeN">
             <objects>
@@ -83,7 +67,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Avy-i0-jR5" kind="relationship" relationship="viewControllers" id="bWz-59-hCN"/>
                         <segue destination="5wq-U0-8BS" kind="relationship" relationship="viewControllers" id="0sZ-c7-Z1K"/>
                         <segue destination="w6f-wM-3CA" kind="relationship" relationship="viewControllers" id="06H-ku-V6q"/>
                     </connections>

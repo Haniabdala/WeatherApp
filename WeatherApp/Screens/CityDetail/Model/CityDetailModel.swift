@@ -13,7 +13,7 @@ class CityDetailModel {
     
     func genDays(index : IndexPath) -> String{
    
-        var date = Date()
+        let date = Date()
         var dateComponent = DateComponents()
         let addDay =  index[1] + 1
         dateComponent.day = addDay

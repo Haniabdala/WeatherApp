@@ -24,12 +24,9 @@ class BaseViewModel: UITabBarController, UITabBarControllerDelegate {
         let secondViewController = HelpViewController()
 
         secondViewController.tabBarItem = UITabBarItem(title: "Help", image: UIImage(named: "help"), tag: 1)
-        let thirdViewController = SettingsViewController()
+   
         
-      
-        thirdViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 2)
-        
-      let tabBarList = [firstViewController,secondViewController,thirdViewController]
+      let tabBarList = [firstViewController,secondViewController]
         
      
         
