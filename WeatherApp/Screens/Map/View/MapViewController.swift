@@ -42,7 +42,28 @@ class MapViewController: UIViewController {
     @IBAction func getCoordinatePressOnMap(sender: UITapGestureRecognizer) {
         let touchLocation = sender.location(in: mapView)
         let locationCoordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
-        print(locationCoordinate.latitude)           }
+        print(locationCoordinate.latitude)
+        
+        let alert = UIAlertController(title: "Add City", message: "Do you want to add this city? ", preferredStyle: .alert)
+   
+        
+        alert.addTextField()
+      
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let submitButton = UIAlertAction(title: "Add ", style: .default) { (action) in
+            self.viewModel.insertCity(CityName: alert.textFields![0].text ?? "", Latitude: locationCoordinate.latitude, Longitude: locationCoordinate.longitude)
+        }
+        alert.addAction(submitButton)
+        alert.addAction(cancelButton)
+    self.present(alert, animated: true, completion: nil)
+        
+        
+        showOnMap(lat: locationCoordinate.latitude, long: locationCoordinate.longitude)
+        
+        
+        
+    }
 
     func AddCity(CityNamE City : String , Latitude lat: Double, Longitude long: Double ){
             let alert = UIAlertController(title: "Add City", message: "Do you want to add this city ", preferredStyle: .alert)

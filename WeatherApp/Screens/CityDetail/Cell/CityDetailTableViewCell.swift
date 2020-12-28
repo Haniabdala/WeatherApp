@@ -15,7 +15,6 @@ class CityDetailTableViewCell: UITableViewCell {
         
        let day = model.genDays(index: index)
         self.textLabel?.text = String("\(day)                            \(response.temp.day)°")
-        self.textLabel?.textAlignment
     }
 
     override func awakeFromNib() {

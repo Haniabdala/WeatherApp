@@ -40,8 +40,6 @@
 		1CE41DAD2596547A009304CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CE41DAC2596547A009304CC /* Main.storyboard */; };
 		1CE41DB72596591A009304CC /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE41DB52596591A009304CC /* HelpViewController.swift */; };
 		1CE41DB82596591A009304CC /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE41DB62596591A009304CC /* HelpViewController.xib */; };
-		1CE41DC2259659A8009304CC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE41DC0259659A8009304CC /* SettingsViewController.swift */; };
-		1CE41DC3259659A8009304CC /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE41DC1259659A8009304CC /* SettingsViewController.xib */; };
 		1CE41DCB25965CEB009304CC /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE41DC925965CEB009304CC /* HomeTableViewCell.swift */; };
 		1CE41DCC25965CEB009304CC /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE41DCA25965CEB009304CC /* HomeTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -82,8 +80,6 @@
 		1CE41DAC2596547A009304CC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1CE41DB52596591A009304CC /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		1CE41DB62596591A009304CC /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
-		1CE41DC0259659A8009304CC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		1CE41DC1259659A8009304CC /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		1CE41DC925965CEB009304CC /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		1CE41DCA25965CEB009304CC /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,7 +239,6 @@
 				1C5E7D8E25964F08008611C5 /* Base */,
 				1C5F7D6D2596446100128B86 /* Home */,
 				1CE41DB0259658DC009304CC /* Help */,
-				1CE41DBB25965975009304CC /* Settings */,
 				1CDD756925967F690074947E /* Map */,
 				1C383B4D25977BE20035E001 /* CityDetail */,
 			);
@@ -339,47 +334,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		1CE41DBB25965975009304CC /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				1CE41DBF25965990009304CC /* Cell */,
-				1CE41DBE2596598B009304CC /* ViewModel */,
-				1CE41DBD25965987009304CC /* View */,
-				1CE41DBC25965980009304CC /* Model */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		1CE41DBC25965980009304CC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1CE41DBD25965987009304CC /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1CE41DC0259659A8009304CC /* SettingsViewController.swift */,
-				1CE41DC1259659A8009304CC /* SettingsViewController.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1CE41DBE2596598B009304CC /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		1CE41DBF25965990009304CC /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		1CE41DD725967B00009304CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,7 +411,6 @@
 				1C383B5A25977C440035E001 /* CityDetailViewController.xib in Resources */,
 				1C5F7D752596451200128B86 /* HomeViewController.xib in Resources */,
 				1CE41DAD2596547A009304CC /* Main.storyboard in Resources */,
-				1CE41DC3259659A8009304CC /* SettingsViewController.xib in Resources */,
 				1CDD756D25967FA60074947E /* MapViewController.xib in Resources */,
 				1CE41DB82596591A009304CC /* HelpViewController.xib in Resources */,
 			);
@@ -476,7 +429,6 @@
 				1C5F7D662596405E00128B86 /* APISettings.swift in Sources */,
 				1C39325925974125003751A2 /* HomeModel.swift in Sources */,
 				1C383B5925977C440035E001 /* CityDetailViewController.swift in Sources */,
-				1CE41DC2259659A8009304CC /* SettingsViewController.swift in Sources */,
 				1C5F7D6A2596414E00128B86 /* City.swift in Sources */,
 				1C54066925973A1600B4C64B /* MapViewModel.swift in Sources */,
 				1C5406642597385700B4C64B /* MapModel.swift in Sources */,

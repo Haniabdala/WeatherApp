@@ -4,16 +4,14 @@
 //
 //  Created by Hani Abdallah on 12/26/20.
 //
-
+import Foundation
 import UIKit
 
 class CityDetailViewController: UIViewController , UITableViewDelegate , UITableViewDataSource  {
    
-    
-    
-    
     let viewModel = CityDetailViewModel()
     
+    @IBOutlet weak var unitSegment: UISegmentedControl!
     var cityName : String = ""
     var cityLatitude : Double = 0.0
     var  cityLongitude : Double = 0.0
@@ -40,18 +38,53 @@ class CityDetailViewController: UIViewController , UITableViewDelegate , UITable
     self.forecastTableView.register(CityDetailTableViewCell.self, forCellReuseIdentifier: "CityDetailTableViewCell")
 }
 }
+ 
+
+    @IBAction func segmentDidChange(_ sender : UISegmentedControl){
+        if sender.selectedSegmentIndex == 0 {
+            
+            let urlData = APISettings.getWeatheraApiRequestUrl(lat: cityLatitude, long: cityLongitude, unit: "metric")
+            
+            guard  let urlString = URL(string: urlData) else {
+                fatalError()
+            }
+            
+            
+            viewModel.getCurrentWeatherData(externalUrl: urlString) { res in
+                
+                self.updateCityDetailView(responseResult: res)
+              
+      
+            
+            }
+            
+        } else if sender.selectedSegmentIndex == 1 {
+            let urlData = APISettings.getWeatheraApiRequestUrl(lat: cityLatitude, long: cityLongitude, unit: "imperial")
+            
+            guard  let urlString = URL(string: urlData) else {
+                fatalError()
+            }
+            
+            
+            viewModel.getCurrentWeatherData(externalUrl: urlString) { res in
+                
+                self.updateCityDetailView(responseResult: res)
+              
+      
+            
+            }
+        }
+        
+    }
+   // let unit = SettingsViewController.getUnit()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-
-      
-
-    
-      
-        let urldata =  APISettings.getForecast(lat: cityLatitude, long: cityLongitude)
-  
-        guard  let urlString = URL(string: urldata) else {
+ 
+     
+        let urlData = APISettings.getWeatheraApiRequestUrl(lat: cityLatitude, long: cityLongitude, unit: "metric")
+        
+        guard  let urlString = URL(string: urlData) else {
             fatalError()
         }
         
@@ -63,8 +96,10 @@ class CityDetailViewController: UIViewController , UITableViewDelegate , UITable
   
         
         }
+   
       
     }
+
     
 
     func updateCityDetailView(responseResult : Response){
