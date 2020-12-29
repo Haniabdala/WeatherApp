@@ -13,9 +13,12 @@
                 <outlet property="CityTempLabel" destination="2qC-fx-vvi" id="wYK-3Q-ere"/>
                 <outlet property="cityNameLabel" destination="fK0-iQ-dfo" id="6CN-14-sy9"/>
                 <outlet property="forecastTableView" destination="dKN-hI-mw1" id="oRc-bs-QpX"/>
+                <outlet property="humidityLabel" destination="v9E-PJ-7NH" id="Sny-6e-kD8"/>
                 <outlet property="unitSegment" destination="uUO-9f-qIZ" id="JeK-rc-ZfB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="weatherIcon" destination="hfQ-Q4-QNT" id="JSn-tc-V7v"/>
                 <outlet property="weatherSatusLabel" destination="TVz-wk-m5j" id="tYp-uJ-d1X"/>
+                <outlet property="windSpeedLabel" destination="f4U-5Q-XzA" id="Jot-hi-7DF"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,30 +26,58 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-05-dOP">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="separatorColor"/>
+                </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2fM-4q-bmo">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-iQ-dfo">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="cityName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-iQ-dfo">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="259"/>
                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="50"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="weatherStatus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVz-wk-m5j">
-                            <rect key="frame" x="112.5" y="55.5" width="189" height="33.5"/>
+                            <rect key="frame" x="112.5" y="259" width="189" height="33.5"/>
                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="30"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityTemp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qC-fx-vvi">
-                            <rect key="frame" x="84" y="89" width="246.5" height="66.5"/>
+                            <rect key="frame" x="84" y="292.5" width="246.5" height="66.5"/>
                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="60"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hfQ-Q4-QNT">
+                            <rect key="frame" x="157" y="359" width="100" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="Y6K-eE-ScC"/>
+                                <constraint firstAttribute="height" constant="100" id="gOA-ao-YsC"/>
+                                <constraint firstAttribute="width" constant="100" id="x8D-Xo-6Mz"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9E-PJ-7NH">
+                            <rect key="frame" x="0.0" y="459" width="414" height="24.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="414" id="cg0-IC-bdx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winds Speed :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4U-5Q-XzA">
+                            <rect key="frame" x="0.0" y="483.5" width="414" height="24.5"/>
+                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dKN-hI-mw1">
-                            <rect key="frame" x="0.0" y="155.5" width="414" height="662.5"/>
+                            <rect key="frame" x="0.0" y="508" width="414" height="310"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="uUO-9f-qIZ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -65,29 +96,41 @@
                         <constraint firstAttribute="bottom" secondItem="dKN-hI-mw1" secondAttribute="bottom" id="7ko-rX-aFS"/>
                         <constraint firstItem="fK0-iQ-dfo" firstAttribute="top" secondItem="2fM-4q-bmo" secondAttribute="top" id="B36-0W-Urh"/>
                         <constraint firstItem="TVz-wk-m5j" firstAttribute="top" secondItem="fK0-iQ-dfo" secondAttribute="bottom" id="BPk-eP-6D6"/>
+                        <constraint firstItem="v9E-PJ-7NH" firstAttribute="leading" secondItem="2fM-4q-bmo" secondAttribute="leading" id="CBe-rD-1Jv"/>
                         <constraint firstAttribute="trailing" secondItem="fK0-iQ-dfo" secondAttribute="trailing" id="L5f-9d-IMa"/>
                         <constraint firstItem="2qC-fx-vvi" firstAttribute="top" secondItem="TVz-wk-m5j" secondAttribute="bottom" id="OrH-O0-Imy"/>
                         <constraint firstAttribute="trailing" secondItem="dKN-hI-mw1" secondAttribute="trailing" id="TiO-fQ-kfq"/>
+                        <constraint firstItem="hfQ-Q4-QNT" firstAttribute="leading" secondItem="2fM-4q-bmo" secondAttribute="leading" id="UAV-xx-FZ7"/>
                         <constraint firstAttribute="trailing" secondItem="fK0-iQ-dfo" secondAttribute="trailing" id="XcF-zU-XpY"/>
+                        <constraint firstItem="hfQ-Q4-QNT" firstAttribute="centerY" secondItem="2fM-4q-bmo" secondAttribute="centerY" id="Xr9-6k-Pam"/>
                         <constraint firstItem="dKN-hI-mw1" firstAttribute="leading" secondItem="2fM-4q-bmo" secondAttribute="leading" id="gHj-RL-B4E"/>
                         <constraint firstItem="fK0-iQ-dfo" firstAttribute="leading" secondItem="2fM-4q-bmo" secondAttribute="leading" id="goB-N4-nUX"/>
                         <constraint firstItem="TVz-wk-m5j" firstAttribute="top" secondItem="fK0-iQ-dfo" secondAttribute="bottom" id="jbi-IP-9Hw"/>
+                        <constraint firstItem="f4U-5Q-XzA" firstAttribute="leading" secondItem="2fM-4q-bmo" secondAttribute="leading" id="m1V-qq-aKE"/>
                         <constraint firstItem="fK0-iQ-dfo" firstAttribute="leading" secondItem="2fM-4q-bmo" secondAttribute="leading" id="nyd-PI-h7y"/>
+                        <constraint firstItem="hfQ-Q4-QNT" firstAttribute="centerX" secondItem="2fM-4q-bmo" secondAttribute="centerX" id="ogH-A6-vGc"/>
                     </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="pdP-05-dOP" secondAttribute="bottom" id="Fqq-LL-dTh"/>
                 <constraint firstItem="2fM-4q-bmo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OwY-TJ-LyW"/>
+                <constraint firstItem="pdP-05-dOP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="V3S-5S-B9N"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pdP-05-dOP" secondAttribute="trailing" id="VGK-fY-DWh"/>
                 <constraint firstItem="2fM-4q-bmo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Z6P-Xh-v7P"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2fM-4q-bmo" secondAttribute="bottom" id="ctx-TQ-ml3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2fM-4q-bmo" secondAttribute="trailing" id="gA8-qk-Sod"/>
+                <constraint firstItem="pdP-05-dOP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pQr-sS-uot"/>
             </constraints>
             <point key="canvasLocation" x="11.594202898550726" y="83.705357142857139"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
