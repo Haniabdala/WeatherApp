@@ -11,6 +11,14 @@ import CoreData
 class HomeViewController: UIViewController  {
 
     var viewModel = HomeViewModel()
+    var searched = [CityCoreData]()
+    var searching = false
+    
+    @IBOutlet weak var citySearchBar: UISearchBar! {
+        didSet{
+            self.citySearchBar.delegate = self
+        }
+    }
     
     @IBAction func addCityButton(_ sender: UIBarButtonItem){
         let addCityVC = MapViewController(nibName: "MapViewController", bundle: nil)
@@ -46,7 +54,14 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.items?.count ?? 0
+        //print(searching)
+
+        if self.searching {
+            return self.searched.count
+        }else{
+            return self.viewModel.items?.count ?? 0
+        }
+    
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,17 +69,36 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
             .dequeueReusableCell(withIdentifier: "HomeTableViewCell",
                                  for: indexPath) as? HomeTableViewCell
             else { fatalError() }
-        let city = viewModel.items![indexPath.row]
-        tableViewCell.configureCell(withCity: city)
+       // print(searching)
+  
+        if self.searching {
+                let city = self.searched[indexPath.row]
+                tableViewCell.configureCell(withCity: city)
+        }else {
+                let city = viewModel.items![indexPath.row]
+                tableViewCell.configureCell(withCity: city)
+            }
+    
+     
         return tableViewCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let CityDetailVC = CityDetailViewController(nibName: "CityDetailViewController", bundle: nil)
-        let cell = viewModel.items![indexPath.row]
-        CityDetailVC.cityName = (cell.name)!
-        CityDetailVC.cityLatitude = (cell.latitude)
-        CityDetailVC.cityLongitude = (cell.longitude)
+        if searching {
+            let cell = searched[indexPath.row]
+     
+            CityDetailVC.cityName = (cell.name)!
+            CityDetailVC.cityLatitude = (cell.latitude)
+            CityDetailVC.cityLongitude = (cell.longitude)
+        }else {
+            let cell = viewModel.items![indexPath.row]
+            CityDetailVC.cityName = (cell.name)!
+            CityDetailVC.cityLatitude = (cell.latitude)
+            CityDetailVC.cityLongitude = (cell.longitude)
+        }
+    
+      
 
         self.navigationController?.pushViewController(CityDetailVC, animated: true)
        
@@ -77,7 +111,6 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
         
         let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
         
-            
             let city = self.viewModel.items![indexPath.row]
             self.viewModel.deleteCity(CityName: city)
             self.reloadTableViewContent()
@@ -87,4 +120,39 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
      
     }
     
+    
+ 
+    
 }
+
+extension HomeViewController :UISearchBarDelegate {
+    
+      func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+          print(searchText.count)
+          if searchText.count != 0 {
+             
+              self.searched = viewModel.items!.filter({ (CityCoreData) -> Bool in
+                  searching = true
+                
+                  if( CityCoreData.name!.contains(searchText)){
+                      return true
+              
+                  }
+                  return false
+              })
+          }else {
+              self.searching = false
+          }
+       
+
+             
+      
+      
+          reloadTableViewContent()
+          }
+}
+
+ 
+      
+    
+
