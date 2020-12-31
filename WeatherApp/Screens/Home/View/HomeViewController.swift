@@ -20,10 +20,29 @@ class HomeViewController: UIViewController  {
         }
     }
     
+    
+    @IBAction func resetCitiesButton(_ sender: UIBarButtonItem) {
+        
+                   let alert = UIAlertController(title: "Reset Cities", message: "Do you want to remove all bookmarked Cities", preferredStyle: .alert)
+                   let cancelButton = UIAlertAction(title: "No", style: .cancel, handler: nil)
+                   let submitButton = UIAlertAction(title: "Yes", style: .default) { (action) in
+                    self.viewModel.resetCities()
+                    self.reloadTableViewContent()
+                
+                   }
+                   alert.addAction(submitButton)
+                   alert.addAction(cancelButton)
+               self.present(alert, animated: true, completion: nil)
+ 
+    }
+    
+
+    
     @IBAction func addCityButton(_ sender: UIBarButtonItem){
         let addCityVC = MapViewController(nibName: "MapViewController", bundle: nil)
         self.navigationController?.pushViewController(addCityVC, animated: true)
     }
+    
     @IBOutlet weak var tableView: UITableView! {
         
             didSet {

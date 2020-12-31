@@ -51,4 +51,22 @@ struct  HomeViewModel {
         
         
     }
+    
+    
+    mutating func resetCities(){
+        let clearRequest = NSBatchDeleteRequest(fetchRequest: CityCoreData.fetchRequest())
+        
+        do {
+              try  self.context.execute(clearRequest)
+            try self.context.save()
+         
+        }catch{
+            
+        }
+        self.fetchCities()
+  
+        }
+    
+    
+
 }

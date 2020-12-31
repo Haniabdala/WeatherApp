@@ -9,6 +9,8 @@ import Foundation
 import CoreData
 
 class HomeModel {
+    
+    
 
     
 }

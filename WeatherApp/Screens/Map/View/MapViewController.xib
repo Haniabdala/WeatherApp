@@ -22,6 +22,9 @@
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b0f-N1-bO8">
                     <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="8rR-6y-1q3"/>
+                    </connections>
                 </mapView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hF8-R8-dHA">
                     <rect key="frame" x="0.0" y="44" width="414" height="56"/>
