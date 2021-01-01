@@ -30,7 +30,9 @@ class CityDetailViewController: UIViewController , UITableViewDelegate , UITable
     self.forecastTableView.dataSource = self
     self.forecastTableView.delegate = self
     self.forecastTableView.tableFooterView = UIView()
-    self.forecastTableView.register(CityDetailTableViewCell.self, forCellReuseIdentifier: "CityDetailTableViewCell")
+      self.forecastTableView.register(CityDetailTableViewCell.self, forCellReuseIdentifier: "CityDetailTableViewCell")
+
+         
 }
 }
     @IBAction func segmentDidChange(_ sender : UISegmentedControl){

@@ -22,10 +22,10 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView! {
         didSet{
             let items = viewModel.fetchCities()
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(MapViewController.getCoordinatePressOnMap(sender: )))
+            gestureRecognizer.numberOfTapsRequired = 1
+            mapView.addGestureRecognizer(gestureRecognizer)
             for city in items {
-                let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(MapViewController.getCoordinatePressOnMap(sender:)))
-                gestureRecognizer.numberOfTapsRequired = 1
-                mapView.addGestureRecognizer(gestureRecognizer)
                 generatePins(lat: city.latitude, long: city.longitude)
             }
             
@@ -40,6 +40,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func getCoordinatePressOnMap(sender: UITapGestureRecognizer) {
+        print("working")
         let touchLocation = sender.location(in: mapView)
         let locationCoordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
         print(locationCoordinate.latitude)

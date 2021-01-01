@@ -7,9 +7,7 @@
 
 import Foundation
 
-
 struct Response : Codable {
-   
     var lat : Double
     var lon : Double
     var current : City

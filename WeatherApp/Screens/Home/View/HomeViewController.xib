@@ -27,6 +27,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                             <items>
                                 <navigationItem title="Cities" id="Tlk-eu-Gcg">
+                                    <barButtonItem key="leftBarButtonItem" title="Reset" id="7CX-hj-ved">
+                                        <connections>
+                                            <action selector="resetCitiesButton:" destination="-1" id="boC-O0-a6A"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem key="rightBarButtonItem" title="Add" id="Um3-4E-1vR">
                                         <connections>
                                             <action selector="addCityButton:" destination="-1" id="av1-PO-BmP"/>

@@ -10,45 +10,26 @@ import CoreData
 import UIKit
 
 struct  HomeViewModel {
-    
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
     var items : [CityCoreData]?
+    let model = HomeModel()
     
-   mutating func fetchCities(){
-
-           do {
-               
-           let request  = CityCoreData.fetchRequest() as NSFetchRequest<CityCoreData>
-               
-             let sort = NSSortDescriptor(key: "name", ascending: true)
-              request.sortDescriptors  = [sort]
-            
-            
-            self.items = try context.fetch(request)
-      
-          
-            
-           }catch {
-            print("Eror here")
-           }
+  mutating func retreiveData(){
+    self.items =  model.fetchCities(context: context)
        }
     
+  mutating func deleteSingleRecord(CityName city : CityCoreData){
+    model.deleteCity(CityName: city, context: context)
+    retreiveData()
+   }
     
-    
-    mutating func deleteCity(CityName city : CityCoreData){
-        
-        self.context.delete(city)
-        do{
-            
-            try  self.context.save()
+    mutating func deleteAllRecords(){
+        let clearRequest = NSBatchDeleteRequest(fetchRequest: CityCoreData.fetchRequest())
+        do {
+            try  self.context.execute(clearRequest)
+            try self.context.save()
         }catch{
-            
         }
- 
-        self.fetchCities()
-        
-        
-    }
+        retreiveData()
+        }
 }
