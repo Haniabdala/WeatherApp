@@ -10,13 +10,12 @@ import UIKit
 class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.nameLabel.numberOfLines = 1
     }
+    
     func configureCell(withCity City: CityCoreData) {
         self.textLabel?.text = City.name
-      
     }
 }

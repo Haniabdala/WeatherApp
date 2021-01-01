@@ -10,13 +10,14 @@ import UIKit
 class CityDetailTableViewCell: UITableViewCell {
 
     let model = CityDetailModel()
-
+    
     func configureCell(response : cityDaily , index : IndexPath){
         
-       let day = model.genDays(index: index)
-        self.textLabel?.text = String("\(day)                            \(response.temp.day)°")
-    }
+     let day = model.genDays(index: index)
+        self.textLabel?.text = String("\(day):\(response.temp.day)°")
 
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
