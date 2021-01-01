@@ -26,13 +26,10 @@ class CityDetailViewController: UIViewController , UITableViewDelegate , UITable
     
     @IBOutlet weak var forecastTableView: UITableView!   {
         didSet {
-
     self.forecastTableView.dataSource = self
     self.forecastTableView.delegate = self
     self.forecastTableView.tableFooterView = UIView()
       self.forecastTableView.register(CityDetailTableViewCell.self, forCellReuseIdentifier: "CityDetailTableViewCell")
-
-         
 }
 }
     @IBAction func segmentDidChange(_ sender : UISegmentedControl){
@@ -43,9 +40,7 @@ class CityDetailViewController: UIViewController , UITableViewDelegate , UITable
             guard  let urlString = URL(string: urlData) else {
                 fatalError()
             }
-
-            viewModel.getCurrentWeatherData(externalUrl: urlString) { res in
-                
+            viewModel.getForcastData(externalUrl: urlString) { res in
                 self.updateCityDetailView(responseResult: res)
             }
             
@@ -55,7 +50,7 @@ class CityDetailViewController: UIViewController , UITableViewDelegate , UITable
             guard  let urlString = URL(string: urlData) else {
                 fatalError()
             }
-            viewModel.getCurrentWeatherData(externalUrl: urlString) { res in
+            viewModel.getForcastData(externalUrl: urlString) { res in
                 
                 self.updateCityDetailView(responseResult: res)
             }
@@ -65,14 +60,11 @@ class CityDetailViewController: UIViewController , UITableViewDelegate , UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         let urlData = APISettings.getWeatheraApiRequestUrl(lat: cityLatitude, long: cityLongitude, unit: "metric")
-        
         guard  let urlString = URL(string: urlData) else {
             fatalError()
         }
-        
-        
-        viewModel.getCurrentWeatherData(externalUrl: urlString) { res in
-            
+
+        viewModel.getForcastData(externalUrl: urlString) { res in
             self.updateCityDetailView(responseResult: res)
         }
     }

@@ -12,7 +12,6 @@ class CityDetailModel {
     
     
     func genDays(index : IndexPath) -> String{
-   
         let date = Date()
         var dateComponent = DateComponents()
         let addDay =  index[1] + 1
@@ -20,7 +19,6 @@ class CityDetailModel {
         let futureDate = Calendar.current.date(byAdding: dateComponent, to: date)
         let formater = DateFormatter()
         formater.dateFormat = "EEEE"
-        
         return formater.string(from: futureDate!)
         }
 

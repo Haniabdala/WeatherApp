@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol HomeViewControllerProtocol  {
     func reloadTableViewContent()
 }

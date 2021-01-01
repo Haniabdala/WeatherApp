@@ -43,10 +43,10 @@
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wir-bE-Vv2">
                             <rect key="frame" x="0.0" y="100" width="414" height="752"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <searchBar key="tableHeaderView" contentMode="redraw" id="m7p-Ub-B8g">
+                            <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter a city..." id="m7p-Ub-B8g">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="address-level2"/>
                             </searchBar>
                         </tableView>
                     </subviews>
