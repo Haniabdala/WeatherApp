@@ -11,25 +11,20 @@ import UIKit
 
 struct  HomeViewModel {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var items : [CityCoreData]?
+    var cities : [CityCoreData]?
     let model = HomeModel()
     
-  mutating func retreiveData(){
-    self.items =  model.fetchCities(context: context)
+  mutating func fetchCities(){
+    self.cities =  model.retreiveData(context: context)
        }
     
-  mutating func deleteSingleRecord(CityName city : CityCoreData){
-    model.deleteCity(CityName: city, context: context)
-    retreiveData()
+  mutating func deleteCity(CityName city : CityCoreData){
+    model.deleteSingleRecord(CityName: city, context: context)
+    fetchCities()
    }
     
-    mutating func deleteAllRecords(){
-        let clearRequest = NSBatchDeleteRequest(fetchRequest: CityCoreData.fetchRequest())
-        do {
-            try  self.context.execute(clearRequest)
-            try self.context.save()
-        }catch{
-        }
-        retreiveData()
-        }
+    mutating func clearCities (){
+        model.deleteAllRecords(context: context)
+        fetchCities()
+}
 }

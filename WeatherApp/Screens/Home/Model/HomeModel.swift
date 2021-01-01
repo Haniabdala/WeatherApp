@@ -10,7 +10,7 @@ import CoreData
 
 class HomeModel {
     
-    func fetchCities(context : NSManagedObjectContext) -> [CityCoreData] {
+    func retreiveData(context : NSManagedObjectContext) -> [CityCoreData] {
         var items = [CityCoreData]()
         do {
             let request  = CityCoreData.fetchRequest() as NSFetchRequest<CityCoreData>
@@ -22,7 +22,7 @@ class HomeModel {
         return items
     }
 
-    func deleteCity(CityName city : CityCoreData , context : NSManagedObjectContext){
+    func deleteSingleRecord(CityName city : CityCoreData , context : NSManagedObjectContext){
         context.delete(city)
         do{
             try  context.save()
@@ -30,7 +30,7 @@ class HomeModel {
         }
     }
     
-    func clearCities(context : NSManagedObjectContext){
+    func deleteAllRecords(context : NSManagedObjectContext){
         let clearRequest = NSBatchDeleteRequest(fetchRequest: CityCoreData.fetchRequest())
         do {
             try  context.execute(clearRequest)

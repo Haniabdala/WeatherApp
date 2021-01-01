@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HelpViewController" customModule="WeatherApp" customModuleProvider="target">
             <connections>
+                <outlet property="helpTextView" destination="0jo-rL-SOz" id="KbU-dZ-bwn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,7 +22,6 @@
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jo-rL-SOz">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <mutableString key="text">In Home Page , you can view the cities bookmarked, also using the add button you can access the map which allow you to add more cities to your home page.                                                                                                    You can add cities by either searching them or by tapping on a specific location of the map.                                                                  You can also delete any city bookmarked by swiping the specific cell to the left.                                                                      Your bookmarks will be showed every time you open the map until you delete them.                                                                                      All your bookmarked cities will be stored locally on your device.                                                                                                                                               In each city detail and forecast page you can choose a specific temperature unit, by toogling the switch between metric(°C) and imperial(°F).</mutableString>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

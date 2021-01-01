@@ -24,7 +24,7 @@ class HomeViewController: UIViewController  {
         let alert = UIAlertController(title: "Reset Cities", message: "Do you want to remove all bookmarked Cities", preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let submitButton = UIAlertAction(title: "Yes", style: .default) { (action) in
-            self.viewModel.deleteAllRecords()
+            self.viewModel.clearCities()
             self.reloadTableViewContent()}
         alert.addAction(submitButton)
         alert.addAction(cancelButton)
@@ -32,20 +32,17 @@ class HomeViewController: UIViewController  {
         
     }
     
-    
     @IBAction func addCityButton(_ sender: UIBarButtonItem){
         let addCityVC = MapViewController(nibName: "MapViewController", bundle: nil)
         self.navigationController?.pushViewController(addCityVC, animated: true)
     }
     
     @IBOutlet weak var tableView: UITableView! {
-        
         didSet {
             self.tableView.dataSource = self
             self.tableView.delegate = self
             self.tableView.tableFooterView = UIView()
             self.tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeTableViewCell")
-            
         }
     }
     
@@ -55,7 +52,7 @@ class HomeViewController: UIViewController  {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.retreiveData()
+        viewModel.fetchCities()
         reloadTableViewContent()
     }
 }
@@ -71,7 +68,7 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
         if self.isSearching {
             return self.searchedCities.count
         }else{
-            return self.viewModel.items?.count ?? 0
+            return self.viewModel.cities?.count ?? 0
         }
     }
     
@@ -80,12 +77,11 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
                 .dequeueReusableCell(withIdentifier: "HomeTableViewCell",
                                      for: indexPath) as? HomeTableViewCell
         else { fatalError() }
-        
         if self.isSearching {
             let city = self.searchedCities[indexPath.row]
             tableViewCell.configureCell(withCity: city)
         }else {
-            let city = viewModel.items![indexPath.row]
+            let city = viewModel.cities![indexPath.row]
             tableViewCell.configureCell(withCity: city)
         }
         return tableViewCell
@@ -95,24 +91,21 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
         let CityDetailVC = CityDetailViewController(nibName: "CityDetailViewController", bundle: nil)
         if isSearching {
             let cell = searchedCities[indexPath.row]
-            
             CityDetailVC.cityName = (cell.name)!
             CityDetailVC.cityLatitude = (cell.latitude)
             CityDetailVC.cityLongitude = (cell.longitude)
         }else {
-            let cell = viewModel.items![indexPath.row]
+            let cell = viewModel.cities![indexPath.row]
             CityDetailVC.cityName = (cell.name)!
             CityDetailVC.cityLatitude = (cell.latitude)
             CityDetailVC.cityLongitude = (cell.longitude)
         }
         self.navigationController?.pushViewController(CityDetailVC, animated: true)}
     
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-            
-            let city = self.viewModel.items![indexPath.row]
-            self.viewModel.deleteSingleRecord(CityName: city)
+            let city = self.viewModel.cities![indexPath.row]
+            self.viewModel.deleteCity(CityName: city)
             self.reloadTableViewContent()
         }
         return UISwipeActionsConfiguration(actions: [action])
@@ -122,7 +115,7 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource , Hom
 extension HomeViewController :UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count != 0 {
-            self.searchedCities = viewModel.items!.filter({ (CityCoreData) -> Bool in
+            self.searchedCities = viewModel.cities!.filter({ (CityCoreData) -> Bool in
                 isSearching = true
                 if( CityCoreData.name!.contains(searchText)){
                     return true
